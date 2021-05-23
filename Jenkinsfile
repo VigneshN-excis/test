@@ -1,12 +1,8 @@
-pipeline{
-    agent {
-        label 'SL202_win'
+pipeline {
+    agent any
+    stages {
+        stage('PULL') { steps { git 'https://github.com/VigneshN-excis/test.git'} }
+        stage('npm') { steps { node('Nodejs14.17'){ bat "npm install" } } }
+        stage('build') { steps { bat "ng build" } }
     }
-    stages{
-        stage('Hello') {
-            steps{
-                echo 'Welcome to Jenkins Pipeline'
-            }
-        }
-    }
-} 
+}
