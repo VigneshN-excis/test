@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        label 'SL202_win'
+    }
     stages{
         stage('Hello') {
             steps{
